@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CRM Case Form</title>
+
+    <style>
+        .input-box {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .help-icon {
+            width: 18px;
+            height: 18px;
+            background: #2ea3f2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            background: #fff;
+            border: 1px solid #d8d8d8;
+            padding: 15px;
+        }
+
+        fieldset {
+            border: 1px solid #d5d5d5;
+            padding: 20px;
+        }
+
+        legend {
+            padding: 0 10px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin-top: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: #444;
+            margin-bottom: 4px;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #cfcfcf;
+            height: 24px;
+            padding: 3px 6px;
+            font-size: 12px;
+            background: #fff;
+        }
+
+        textarea {
+            height: 55px;
+        }
+
+        .required {
+            color: red;
+            font-weight: bold;
+        }
+
+        .double {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .triple {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+
+        .radio-box {
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: #444;
+        }
+
+        .radio-box input {
+            margin-left: 10px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            gap: 25px;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+
+        .checkbox-row input {
+            width: auto;
+            height: auto;
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 8px;
+        }
+
+        .duration-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .duration-flex {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .duration-flex input {
+            width: 70px;
+        }
+
+        .blue-btn {
+            background: #2488c9;
+            border: none;
+            color: #fff;
+            padding: 5px 12px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .blue-btn:hover {
+            background: #15689b;
+        }
+
+        .bottom-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .small-red {
+            color: red;
+            font-size: 11px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #d9d9d9;
+            margin: 15px 0;
+        }
+
+        .top-date {
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .top-date input {
+            width: 120px;
+        }
+
+        .attach-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .attach-row input[type="checkbox"] {
+            width: auto;
+            height: auto;
+        }
+
+        @media(max-width:900px) {
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .double,
+            .triple,
+            .duration-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <fieldset>
+
+            <legend>Case</legend>
+
+            <div class="top-date">
+
+                <span class="required">*</span>
+                Date :
+
+                <input type="text" data-required="true">
+
+            </div>
+
+            <div class="main-grid">
+
+                <!-- LEFT SECTION -->
+
+                <div>
+
+                    <div class="form-group">
+
+                        <label>
+                            <span class="required">*</span>
+                            Client
+                        </label>
+
+                        <input type="text" data-required="true">
+
+                    </div>
+
+                    <div class="double">
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Case Type
+                            </label>
+
+                            <select data-required="true">
+                                <option value="">
+                                    Select Case Type
+                                </option>
+                                <option>
+                                    General Case
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Product
+                            </label>
+
+                            <select data-required="true">
+                                <option value="">
+                                    Select Product
+                                </option>
+                                <option>
+                                    Product 1
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Module</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Attach Control ID</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Problem</label>
+
+                        <textarea></textarea>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="double">
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Support Solution
+                            </label>
+
+                            <select data-required="true">
+                                <option value="">
+                                    Select Support
+                                </option>
+                                <option>
+                                    Hiren Rathod
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Support ID
+                            </label>
+
+                            <input type="text" value="" data-required="true">
+
+                        </div>
+
+                    </div>
+
+                    <div class="triple">
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Priority
+                            </label>
+
+                            <select data-required="true">
+                                <option value="">
+                                    Select Priority
+                                </option>
+                                <option>
+                                    3 - Normal
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Upload File</label>
+
+                            <button type="button" class="blue-btn">
+
+                                Browse
+
+                            </button>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>&nbsp;</label>
+
+                            <button type="button" class="blue-btn">
+
+                                Attach More
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="small-red">
+
+                        File Size max 2048
+
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+
+                        <label>Status</label>
+
+                        <select>
+                            <option>
+                                Pending
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="double">
+
+                        <div class="form-group">
+
+                            <label>
+                                Followup Required
+                            </label>
+
+                            <select id="followupRequired">
+
+                                <option>No</option>
+
+                                <option>Yes</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Billing</label>
+
+                            <select>
+
+                                <option>No</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="triple">
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Start Call
+                            </label>
+
+                            <input type="text" value="" data-required="true">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>PM</label>
+
+                            <select>
+
+                                <option>PM</option>
+                                <option>AM</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Reported Date
+                            </label>
+
+                            <input type="text" value="" data-required="true">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Rem. Solution</label>
+
+                        <textarea></textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SECTION -->
+
+                <div>
+
+                    <!-- CONTACTED BY -->
+
+                    <div class="radio-box" data-radio-required="true" data-label="Contacted By">
+
+                        <span class="required">*</span>
+
+                        Contacted By :
+
+                        <input type="radio" name="cnt">
+                        VAR
+
+                        <input type="radio" name="cnt">
+                        Client
+
+                    </div>
+
+                    <!-- TYPE -->
+
+                    <div class="radio-box" data-radio-required="true" data-label="Type">
+
+                        <span class="required">*</span>
+
+                        Type :
+
+                        <input type="radio" name="type">
+                        Agent
+
+                        <input type="radio" name="type">
+                        Call
+
+                        <input type="radio" name="type">
+                        CRD
+
+                        <input type="radio" name="type">
+                        Email
+
+                        <input type="radio" name="type">
+                        Other
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Version</label>
+
+                        <select>
+
+                            <option>
+                                Select Version
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="attach-row">
+
+                        <input type="radio" name="attach">
+
+                        <span class="required">*</span>
+
+                        Attach Solution(s)
+
+                        <input type="radio" name="attach">
+
+                        Attach Note
+
+                    </div>
+
+                    <br>
+
+                    <div class="form-group">
+
+                        <textarea></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Called By</label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <hr>
+
+                    <div class="double">
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Assign To
+                            </label>
+
+                            <select data-required="true">
+
+                                <option value="">
+                                    Select Assign To
+                                </option>
+
+                                <option>
+                                    Hiren Rathod
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                Agent No
+                            </label>
+
+                            <input type="text" data-required="true">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>PS Type</label>
+
+                        <select>
+
+                            <option>Select</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="checkbox-row">
+
+                        <label>
+
+                            <input type="checkbox">
+
+                            Daily Log
+
+                        </label>
+
+                        <label>
+
+                            <input type="checkbox">
+
+                            Log Interface Activity
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Notify on Status Update
+                        </label>
+
+                        <input type="text">
+
+                    </div>
+
+                    <div class="time-grid">
+
+                        <div class="form-group">
+
+                            <label id="nextDateLabel">
+
+                                Next Followup Date
+
+                            </label>
+
+                            <input type="text" id="nextFollowupDate">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Time</label>
+
+                            <input type="text">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>PM</label>
+
+                            <select>
+
+                                <option>PM</option>
+                                <option>AM</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label id="nextByLabel">
+
+                            Next Followup By
+
+                        </label>
+
+                        <select id="nextFollowupBy">
+
+                            <option value="">
+                                Select Followup By
+                            </option>
+
+                            <option>
+                                Hiren Rathod
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="duration-grid">
+
+                        <!-- DURATION -->
+
+                        <div>
+
+                            <label style="font-size:12px;">
+
+                                <span class="required">*</span>
+
+                                Duration
+
+                            </label>
+
+                            <div class="duration-flex">
+
+                                <input type="text" placeholder="H(s)" data-duration="Duration">
+
+                                <input type="text" placeholder="Min(s)" data-duration="Duration">
+
+                            </div>
+
+                        </div>
+
+                        <!-- ACTUAL DURATION -->
+
+                        <div>
+
+                            <label style="font-size:12px;">
+
+                                <span class="required">*</span>
+
+                                Actual Duration
+
+                            </label>
+
+                            <div class="duration-flex">
+
+                                <input type="text" placeholder="H(s)" data-duration="Actual Duration">
+
+                                <input type="text" placeholder="Min(s)" data-duration="Actual Duration">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <br>
+
+                    <div class="time-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                <span class="required">*</span>
+                                End Call
+                            </label>
+
+                            <input type="text" value="" data-required="true">
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>PM</label>
+
+                            <select>
+
+                                <option>PM</option>
+                                <option>AM</option>
+
+                            </select>
+
+                        </div>
+
+                        <div></div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Special Remark</label>
+
+                        <textarea></textarea>
+
+                    </div>
+
+                    <div class="input-box">
+
+                        <span class="help-icon">?</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="bottom-buttons">
+
+                <button class="blue-btn">
+
+                    Save
+
+                </button>
+
+                <button class="blue-btn">
+
+                    Save & Continue
+
+                </button>
+
+                <button class="blue-btn">
+
+                    Save & New
+
+                </button>
+
+                <button class="blue-btn">
+
+                    Save & New for Same Client
+
+                </button>
+
+                <button class="blue-btn">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </fieldset>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
